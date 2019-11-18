@@ -1,0 +1,48 @@
+<h1> List of Users </h1>
+
+<form>
+  
+  <label for="username_box"> Username </label>
+  <input id="username_box" name="input_username">
+
+  <label for="private_option"> Private? </label>
+  <input type="checkbox" id="private_option" name="private_selection">
+
+</form>
+
+<hr>
+
+<table border="1">
+  <tr>
+    <th>
+      Username
+    </th>
+    
+    <th>
+      Private?
+    </th>
+    
+    <th>
+    </th>
+  </tr>
+
+
+<% @users.each do |account| %>
+  <tr>
+    <td>
+      <%= account.username %>
+    </td>
+
+    <td>
+      <%= account.private%>
+    </td>
+
+    <td>
+      Show details
+    </td>
+
+  </tr>
+  
+  <%end%>
+
+</table>

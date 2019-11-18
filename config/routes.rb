@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   # User routes
-
+  match("/", { :controller => "users", :action => "index", :via => "get" })
+  
   # CREATE
   match("/insert_user_record", {:controller => "users", :action => "create", :via => "get"})
 

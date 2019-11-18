@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all.order({ :username => :asc })
   
-    render({ :json => @users.as_json })
+    render({ :template => "user_templates/all_users.html.erb" })
   end
   
   def show
