@@ -1,12 +1,16 @@
 <h1> List of Users </h1>
 
-<form>
+<form action="/insert_user_record">
   
   <label for="username_box"> Username </label>
   <input id="username_box" name="input_username">
 
   <label for="private_option"> Private? </label>
   <input type="checkbox" id="private_option" name="private_selection">
+
+  <button>
+    Add user
+  </button>
 
 </form>
 
@@ -34,11 +38,18 @@
     </td>
 
     <td>
-      <%= account.private%>
+      <% if account.private == true %>
+        <% p = "Yes" %>
+      <% else %>
+        <% p = "No" %>
+        <% end %>
+      <%= p %>
     </td>
 
     <td>
+      <a href="/users/<%= account.username %>">
       Show details
+      </a>
     </td>
 
   </tr>
