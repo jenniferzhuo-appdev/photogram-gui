@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     the_username = params.fetch(:the_username)
     @user = User.where({ :username => the_username }).at(0)
   
-    render({ :json => @user.as_json })
+    render({ :template => "user_templates/details.html.erb" })
   end
   
   def create
@@ -21,7 +21,6 @@ class UsersController < ApplicationController
     user.comments_count = params.fetch(:input_comments_count, 0)
     
     user.save
-    
     redirect_to("/users")
   end
   
