@@ -1,1 +1,22 @@
-<h1> howdy </h1>
+<h1> <%= @user.username %>  </h1>
+
+
+  <label>
+    Private 
+  </label>
+  <p class="tab">      <%= @user.private %> </p>
+
+  <label>
+    Followers 
+  </label>
+  <p class="tab">      <%= @user.accepted_received_follow_requests.count %> </p>
+
+  <label>
+    Following 
+  </label>
+ <p class="tab">     <%= @user.accepted_sent_follow_requests.count %> </p>
+
+
+
+
+<h2> Own photos (<%= @user.own_photos.count%>) </h2>

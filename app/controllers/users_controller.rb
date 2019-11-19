@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     user.comments_count = params.fetch(:input_comments_count, 0)
     
     user.save
-    redirect_to("/users")
+    redirect_to("/users/" + user.username)
   end
   
   def update
