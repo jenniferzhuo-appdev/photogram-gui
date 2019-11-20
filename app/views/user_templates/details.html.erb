@@ -1,22 +1,102 @@
+<link rel="stylesheet" href="/user_templates/styles.css">
 <h1> <%= @user.username %>  </h1>
 
-
-  <label>
+<div>
+  <label for="privacy_selection">
     Private 
   </label>
-  <p class="tab">      <%= @user.private %> </p>
-
+</div>
+<div>
+      <%= @user.private %> 
+</div>
+<div>
   <label>
     Followers 
   </label>
-  <p class="tab">      <%= @user.accepted_received_follow_requests.count %> </p>
-
+</div>
+<div>
+      <%= @user.accepted_received_follow_requests.count %> 
+</div>
+<div>
   <label>
     Following 
   </label>
- <p class="tab">     <%= @user.accepted_sent_follow_requests.count %> </p>
+</div>
+<div>
+      <%= @user.accepted_sent_follow_requests.count %> 
+</div>
 
+<div>
+  <label>
+    Edit user
+  </label>
+</div>
+<div>
+  <label for="username_box">
+    Username
+  </label>
 
+  <input type="text" id="username_box" value="<%= @user.username %>">
+
+  <label for="privacy_box">
+    Private?
+  </label>
+
+  <input type="checkbox" id="privacy_box">
+</div>
+
+  <button>
+    Update user
+  </button>
 
 
 <h2> Own photos (<%= @user.own_photos.count%>) </h2>
+
+<table border="1">
+<tr>
+  <th>
+    Image
+  </th>
+  
+  <th>
+    Owner
+  </th>
+
+  <th>
+    Caption
+  </th>
+
+  <th>
+    Posted
+  </th>
+
+  <th>
+    Likes
+  </th>
+</tr>
+
+
+<% @user.own_photos.each do |pic| %>
+<tr>
+  <td>
+    <img width =100 src="<%=pic.image%>" >
+  </td>
+  
+  <td>
+    <%= pic.poster.username %>
+  </td>
+
+  <td>
+    <%= pic.caption %>
+  </td>
+
+  <td>
+    <%= pic.created_at %>
+  </td>
+
+  <td>
+    <%= pic.likes %>
+  </td>
+</tr>
+<% end %>
+</table>

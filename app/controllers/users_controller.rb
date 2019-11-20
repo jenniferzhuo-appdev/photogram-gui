@@ -56,10 +56,11 @@ class UsersController < ApplicationController
   end
   
   def own_photos
-    username = params.fetch(:the_username)
-    user = User.where({ :username => username }).at(0)
-  
-    render({ :json => user.own_photos.as_json })
+    the_username = params.fetch("a_user_name")
+    user_account = User.where({:username => the_username}).pluck(:id)
+    photo_selection = Photo.where({ :owner_id => user_account})
+    render({:json => photo_selection.to_json})
+    
   end
   
   def feed
