@@ -65,10 +65,10 @@ Add a fan
 
 <form action="/update_photo/<%= @photo.id %>">
   <label for="image_url_box"> Image </label>
-  <input id="image_url_box" name="the_photo_id" value="<%= @photo.image %>">
+  <input id="image_url_box" name="input_image" value="<%= @photo.image %>">
 
   <label for="caption_box"> Caption </label>
-  <textarea id="caption_box" name="input_user_id"> <%= @photo.caption %> </textarea>
+  <textarea id="caption_box" name="input_caption"> <%= @photo.caption %> </textarea>
 
   <button>
     Update photo
@@ -103,21 +103,21 @@ Add a fan
     </th>
   </tr>
 
-<%= @photo.comments.count%>
+<% @photo.comments.each do |comment|%>
   <tr>
     <td>
-      hi
+      <%= User.where({:id => comment.author_id}).pluck(:username).at(0) %>
     </td>
 
     <td>
-       hi
+       <%= comment.body %>
     </td>
 
     <td>
-       hi
+       <%= comment.created_at %>
     </td>
   </tr>
-
+<%end %>
 
 
 </table>

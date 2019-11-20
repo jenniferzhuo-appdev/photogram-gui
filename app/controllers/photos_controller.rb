@@ -55,7 +55,7 @@ class PhotosController < ApplicationController
     
     photo.save
 
-    render({ :json => photo.as_json })
+    redirect_to("/photos/"+ photo.id.to_s)
   end
 
   def destroy
@@ -69,9 +69,9 @@ class PhotosController < ApplicationController
  
   def comments
     the_id = params.fetch(:the_photo_id)
-    photo = Photo.where({ :id => the_id }).at(0)
+    @photo = Photo.where({ :id => the_id }).at(0)
 
-    render({ :json => photo.comments.as_json })
+    render({ :json => @photo.comments.as_json })
   end
 
   def likes
