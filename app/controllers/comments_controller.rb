@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
     
     comment.save
 
-    render({ :json => comment.as_json })
+    redirect_to("/photos/" + comment.photo_id.to_s)
  
   end
 

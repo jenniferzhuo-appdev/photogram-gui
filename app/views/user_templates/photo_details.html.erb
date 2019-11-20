@@ -49,7 +49,7 @@ Add a fan
 </div>
 <form action="/insert_like_record">
   <label for="photo_id_box"> Photo ID </label>
-  <input id="photo_id_box" name="the_photo_id" value="<%= @photo.id %>">
+  <input id="photo_id_box" name="input_photo_id" value="<%= @photo.id %>">
 
   <label for="fan_id_box"> Fan ID </label>
   <input id="fan_id_box" name="input_user_id" placeholder="Enter a caption for the photo..."> 
@@ -123,7 +123,7 @@ Add a fan
 </table>
 
 <h3> Add a new comment </h3>
-<form>
+<form action="/insert_comment_record">
   <label for="photo_id_box"> 
     Photo ID
   </label>
@@ -138,5 +138,9 @@ Add a fan
     Comment
   </label>
   <textarea id="comment_box" name="input_body"> </textarea>
+
+  <button>
+    Add comment
+  </button>
   
 </form> 
