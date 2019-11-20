@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
   def index
-    comments = Comment.all.order({ :created_at => :asc })
+    @comments = Comment.all.order({ :created_at => :asc })
 
-    render({ :json => comments.as_json })
+    redirect_to({ :json => @comments.as_json })
   end
 
   def show

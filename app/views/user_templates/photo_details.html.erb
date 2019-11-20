@@ -1,0 +1,142 @@
+<h1> Photo Details </h1>
+
+<div>
+  <label>
+    Image 
+  </label>
+</div>
+<div>
+      <img width =100 src="<% @photo.image %>" >  
+</div>
+
+<div>
+  <label>
+    Caption 
+  </label>
+</div>
+<div>
+      <%= @photo.caption %> 
+</div>
+
+<div>
+  <label>
+    Owner 
+  </label>
+</div>
+<div>
+      <% photo_owner_id = @photo.owner_id %>
+      <% user_account = User.where({:id => photo_owner_id}).pluck(:username).at(0) %>
+      <%= user_account %>
+</div>
+
+<div>
+  <label>
+    Posted 
+  </label>
+</div>
+<div>
+      <%= @photo.created_at %>
+</div>
+
+
+<div>
+  <label>
+    Fans 
+  </label>
+</div>
+<div>
+Add a fan
+</div>
+<form action="/insert_like_record">
+  <label for="photo_id_box"> Photo ID </label>
+  <input id="photo_id_box" name="the_photo_id" value="<%= @photo.id %>">
+
+  <label for="fan_id_box"> Fan ID </label>
+  <input id="fan_id_box" name="input_user_id" placeholder="Enter a caption for the photo..."> 
+
+  <button>
+    Add fan 
+  </button>
+ </form>
+
+<div>
+  Edit photo
+</div>
+
+<form action="/update_photo/<%= @photo.id %>">
+  <label for="image_url_box"> Image </label>
+  <input id="image_url_box" name="the_photo_id" value="<%= @photo.image %>">
+
+  <label for="caption_box"> Caption </label>
+  <textarea id="caption_box" name="input_user_id"> <%= @photo.caption %> </textarea>
+
+  <button>
+    Update photo
+  </button>
+</form>
+
+<div>
+    Delete photo
+</div>
+
+
+<form>
+  <a href="/delete_photo/<%= @photo.id %>">
+  Delete this photo
+  </a>
+
+</form>
+
+<h2> Comments </h2>
+<table border="1">
+  <tr>
+    <th>
+      Commenter
+    </th>
+
+    <th>
+      Comment
+    </th>
+
+    <th>
+      Posted
+    </th>
+  </tr>
+
+<%= @photo.comments.count%>
+  <tr>
+    <td>
+      hi
+    </td>
+
+    <td>
+       hi
+    </td>
+
+    <td>
+       hi
+    </td>
+  </tr>
+
+
+
+</table>
+
+<h3> Add a new comment </h3>
+<form>
+  <label for="photo_id_box"> 
+    Photo ID
+  </label>
+  <input id="photo_id_box" value="<%= @photo.id %>" name="input_photo_id">
+
+  <label for="author_id_box"> 
+    Author ID
+  </label>
+  <input id="author_id_box" name="input_author_id">
+
+  <label for="comment_box"> 
+    Comment
+  </label>
+  <textarea id="comment_box" name="input_body"> </textarea>
+  
+</form> 

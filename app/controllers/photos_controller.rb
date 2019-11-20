@@ -4,7 +4,7 @@ class PhotosController < ApplicationController
     
     respond_to do |format|
       format.html do
-        render({ :template => "user_templates/all_users.html.erb", :template => "user_templates/details.html.erb"})
+        render({ :template => "user_templates/all_photos.html.erb"})
       end
 
       format.json do
@@ -17,7 +17,15 @@ class PhotosController < ApplicationController
     the_id = params.fetch(:the_photo_id)
     @photo = Photo.where({ :id => the_id }).at(0)
 
-    render({ :json => @photo.as_json })
+    respond_to do |format|
+      format.html do
+        render({ :template => "user_templates/photo_details.html.erb"})
+      end
+
+      format.json do
+        render({ :json => @photo.as_json })
+      end
+    end
   end
 
   def create
@@ -31,7 +39,7 @@ class PhotosController < ApplicationController
     
     photo.save
 
-    render({ :json => photo.as_json })
+    redirect_to("/photos/" + photo.id.to_s)
   end
 
   def update
@@ -56,7 +64,7 @@ class PhotosController < ApplicationController
 
     photo.destroy
 
-    render({ :json => photo.as_json })
+    redirect_to("/photos")
   end
  
   def comments

@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     
     user.save
   
-    render({ :json => user.as_json })
+    redirect_to("/users/" + user.username)
   
   end
   

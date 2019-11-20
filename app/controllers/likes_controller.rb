@@ -7,9 +7,9 @@ class LikesController < ApplicationController
 
   def show
     the_id = params.fetch(:the_photo_id)
-    like = Like.where({ :id => the_id }).at(0)
+    @like = Like.where({ :id => the_id }).at(0)
 
-    render({ :json => like.as_json })
+    render({ :json => @like.as_json })
   end
 
   def create
